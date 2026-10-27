@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant Website Template</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#fffaf1;color:#26352b}
+header{background:#183b2b;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header h2{margin:0}
+nav a{color:white;text-decoration:none;margin:0 8px}
+.hero{padding:65px 7%;text-align:center;background:linear-gradient(135deg,#254d38,#102b20);color:white}
+.hero h1{font-size:clamp(34px,7vw,58px);margin:10px}
+.hero p{color:#e4eddf}
+button{border:0;border-radius:7px;padding:12px 17px;background:#d9ad5b;color:#17271c;font-weight:bold;cursor:pointer}
+section{padding:38px 7%}
+h2{color:#20452f}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.item{padding:20px;border:1px solid #e5dcc9;border-radius:12px;background:white}
+.price{font-weight:bold;color:#9a6b20;font-size:19px}
+footer{text-align:center;background:#183b2b;color:white;padding:25px}
+#editor{background:#f0eadc;border:1px solid #d8cbb2;border-radius:12px;padding:20px;margin:20px 7%}
+label{display:block;font-weight:bold;margin-top:12px}
+input,textarea{width:100%;padding:11px;margin-top:5px;border:1px solid #c8c0b2;border-radius:7px;font:inherit}
+.note{font-size:13px;color:#5c625a}
+</style>
+</head>
+<body>
+<header>
+<h2 id="brand">Royal Garden Restaurant</h2>
+<nav><a href="#menu">Menu</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+</header>
+
+<div class="hero">
+<p>FRESH FOOD · WARM HOSPITALITY</p>
+<h1 id="heroName">Good Food, Great Memories</h1>
+<p id="description">Discover delicious meals prepared with care and fresh ingredients.</p>
+<button onclick="document.querySelector('#menu').scrollIntoView({behavior:'smooth'})">Explore Our Menu</button>
+</div>
+
+<section id="menu">
+<h2>Our Menu</h2>
+<p>Customer favourites, freshly prepared.</p>
+<div class="menu" id="menuItems"></div>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<p id="aboutText">We welcome our guests to enjoy tasty food in a friendly atmosphere.</p>
+</section>
+
+<section id="contact">
+<h2>Visit Us</h2>
+<p><b>Location:</b> <span id="location">Jaffna, Sri Lanka</span></p>
+<p><b>Opening hours:</b> <span id="hours">Every day, 10:00 AM – 10:00 PM</span></p>
+<p><b>Phone:</b> <span id="phone">Add your restaurant phone number</span></p>
+</section>
+
+<footer>© <span id="year"></span> <span id="footerName">Royal Garden Restaurant</span></footer>
+
+<section id="editor">
+<h2>Restaurant Website Editor</h2>
+<p>Change the example details below and preview your website. Your edits can be exported as a configuration file.</p>
+<label>Restaurant name</label><input id="editName" value="Royal Garden Restaurant">
+<label>Headline</label><input id="editHeadline" value="Good Food, Great Memories">
+<label>Description</label><textarea id="editDescription">Discover delicious meals prepared with care and fresh ingredients.</textarea>
+<label>Menu (one item per line: name | price)</label>
+<textarea id="editMenu" rows="5">Chicken Rice | LKR 1,200
+Vegetable Kottu | LKR 850
+Fresh Juice | LKR 450</textarea>
+<label>Location</label><input id="editLocation" value="Jaffna, Sri Lanka">
+<label>Opening hours</label><input id="editHours" value="Every day, 10:00 AM – 10:00 PM">
+<label>Phone</label><input id="editPhone" value="Add your restaurant phone number">
+<label>About the restaurant</label><textarea id="editAbout">We welcome our guests to enjoy tasty food in a friendly atmosphere.</textarea>
+<button onclick="preview()">Update Website Preview</button>
+<button onclick="exportSettings()">Export My Settings</button>
+<button onclick="downloadWebsite()">Download My Website</button>
+<p class="note">This editor runs in your browser. Exporting downloads your settings as a JSON file; it does not automatically publish changes to a hosted website.</p>
+</section>
+
+<script>
+const $=id=>document.getElementById(id);
+function preview(){
+const name=$('editName').value.trim()||'Restaurant';
+$('brand').textContent=name;
+$('footerName').textContent=name;
+$('heroName').textContent=$('editHeadline').value;
+$('description').textContent=$('editDescription').value;
+$('aboutText').textContent=$('editAbout').value;
+$('location').textContent=$('editLocation').value;
+$('hours').textContent=$('editHours').value;
+$('phone').textContent=$('editPhone').value;
+$('menuItems').replaceChildren();
+$('editMenu').value.split('\n').forEach(line=>{
+const parts=line.split('|');
+if(!parts[0]||!parts[0].trim())return;
+const card=document.createElement('article');
+card.className='item';
+const title=document.createElement('h3');
+title.textContent=parts[0].trim();
+const price=document.createElement('p');
+price.className='price';
+price.textContent=(parts[1]||'Price on request').trim();
+card.append(title,price);
+$('menuItems').append(card);
+});
+}
+function exportSettings(){
+const settings={
+name:$('editName').value,
+headline:$('editHeadline').value,
+description:$('editDescription').value,
+menu:$('editMenu').value,
+location:$('editLocation').value,
+hours:$('editHours').value,
+phone:$('editPhone').value,
+about:$('editAbout').value
+};
+const blob=new Blob([JSON.stringify(settings,null,2)],{type:'application/json'});
+const url=URL.createObjectURL(blob);
+const a=document.createElement('a');
+a.href=url;
+a.download='restaurant-settings.json';
+a.click();
+URL.revokeObjectURL(url);
+}
+
+function downloadWebsite(){
+  const data = {
+    name: $('editName').value.trim() || 'Restaurant',
+    headline: $('editHeadline').value,
+    description: $('editDescription').value,
+    menu: $('editMenu').value,
+    location: $('editLocation').value,
+    hours: $('editHours').value,
+    phone: $('editPhone').value,
+    about: $('editAbout').value
+  };
+
+  const safe = value => String(value).replace(/[&<>"']/g, ch => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[ch]));
+
+  const menu = data.menu.split('\n').map(line => {
+    const parts = line.split('|');
+    if (!parts[0].trim()) return '';
+    return '<article class="item"><h3>' + safe(parts[0].trim()) +
+      '</h3><p class="price">' + safe((parts[1] || 'Price on request').trim()) +
+      '</p></article>';
+  }).join('');
+
+  const page = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${safe(data.name)}</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font:16px Arial,sans-serif;background:#f8f4e9;color:#243b2c;line-height:1.6}
+header,footer{background:#183c2b;color:white;text-align:center;padding:24px}
+main{max-width:900px;margin:auto;padding:24px}
+.hero{text-align:center;padding:48px 16px;background:#e9dfc5;border-radius:16px}
+h1,h2{line-height:1.2}.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.item{background:white;padding:16px;border-radius:12px;box-shadow:0 2px 8px #0001}
+.price{font-weight:bold;color:#8b5b20}
+section{margin:30px 0}a{color:inherit}
+</style>
+</head>
+<body>
+<header><h2>${safe(data.name)}</h2></header>
+<main>
+<div class="hero"><h1>${safe(data.headline)}</h1><p>${safe(data.description)}</p></div>
+<section><h2>Our Menu</h2><div class="menu">${menu}</div></section>
+<section><h2>About Us</h2><p>${safe(data.about)}</p></section>
+<section><h2>Visit Us</h2><p>Location: ${safe(data.location)}</p>
+<p>Opening hours: ${safe(data.hours)}</p><p>Phone: ${safe(data.phone)}</p></section>
+</main>
+<footer><p>© ${new Date().getFullYear()} ${safe(data.name)}</p></footer>
+</body></html>`;
+
+  const blob = new Blob([page], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'my-restaurant-website.html';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+$('year').textContent=new Date().getFullYear();
+preview();
+</script>
+</body>
+</html>

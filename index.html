@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>KNIGHT Web Studio | Website Templates</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #f5f7ff;
+      line-height: 1.6;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 7%;
+      border-bottom: 1px solid #27304b;
+    }
+    .logo { font-size: 21px; font-weight: 800; }
+    .logo span { color: #65a8ff; }
+    nav a {
+      color: #c8d2eb;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 14px;
+    }
+    .hero {
+      padding: 75px 7% 55px;
+      text-align: center;
+      background: radial-gradient(ellipse at top, #1b3260, #0b1020 68%);
+    }
+    .tag {
+      color: #8fc2ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    h1 { font-size: clamp(36px, 7vw, 65px); line-height: 1.1; margin: 18px 0; }
+    h1 span { color: #65a8ff; }
+    .hero p { max-width: 590px; margin: 0 auto 25px; color: #bac6df; }
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #3985f5;
+      color: white;
+      text-decoration: none;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+    .section { padding: 45px 7%; }
+    .section h2 { font-size: 29px; margin-bottom: 6px; }
+    .muted { color: #a9b6d0; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+    .card {
+      overflow: hidden;
+      border: 1px solid #2b3655;
+      background: #121a30;
+      border-radius: 15px;
+    }
+    .preview {
+      min-height: 145px;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #203d54, #17213d);
+      font-size: 24px;
+      font-weight: 800;
+    }
+    .preview.business { background: linear-gradient(135deg, #4c3b28, #202a32); }
+    .preview.portfolio { background: linear-gradient(135deg, #44305e, #17213d); }
+    .card-content { padding: 18px; }
+    .card h3 { margin: 0 0 6px; }
+    .price { font-size: 20px; font-weight: bold; color: #8fc2ff; }
+    .small { font-size: 13px; color: #a9b6d0; }
+    .coming {
+      display: inline-block;
+      border: 1px solid #4c5d7c;
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 12px;
+      color: #c9d8f3;
+      margin-top: 8px;
+    }
+    .info {
+      border: 1px solid #2b3655;
+      border-radius: 14px;
+      padding: 22px;
+      background: #11192d;
+    }
+    footer {
+      padding: 25px 7%;
+      border-top: 1px solid #27304b;
+      color: #9caac5;
+      font-size: 13px;
+    }
+    @media(max-width: 520px) {
+      header { padding: 17px 5%; }
+      nav a { margin-left: 8px; font-size: 12px; }
+      .hero { padding: 55px 5% 40px; }
+      .section { padding: 35px 5%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">KNIGHT <span>WEB STUDIO</span></div>
+    <nav>
+      <a href="#templates">Templates</a>
+      <a href="#how">How it works</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="tag">Your website. Your files. Your control.</div>
+      <h1>Build your online presence<br><span>your own way.</span></h1>
+      <p>Discover modern website templates for restaurants, small businesses and creators. Customize your website and manage your own files.</p>
+      <a class="button" href="#templates">Explore templates</a>
+    </section>
+
+    <section class="section" id="templates">
+      <h2>Website templates</h2>
+      <p class="muted">Our first designs are in development. Preview the planned collections below.</p>
+      <div class="cards">
+        <article class="card">
+          <div class="preview">Restaurant<br>Collection</div>
+          <div class="card-content">
+            <h3>Restaurant Website</h3>
+            <p class="small">Menu, prices, location, opening hours and contact details.</p>
+            <div class="price">Coming soon</div>
+            <span class="coming">First template in development</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="preview business">Business<br>Collection</div>
+          <div class="card-content">
+            <h3>Small Business Website</h3>
+            <p class="small">Services, business information, contact details and a clean design.</p>
+            <div class="price">Coming soon</div>
+            <span class="coming">Planned</span>
+          </div>
+        </article>
+        <article class="card">
+          <div class="preview portfolio">Creator<br>Collection</div>
+          <div class="card-content">
+            <h3>Portfolio Website</h3>
+            <p class="small">Showcase projects, skills, work samples and contact information.</p>
+            <div class="price">Coming soon</div>
+            <span class="coming">Planned</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    
+        <article class="card">
+          <div class="preview">Restaurant<br>Website Template</div>
+          <div class="card-content">
+            <h3>KNIGHT Restaurant Template</h3>
+            <p class="small">Responsive restaurant website with menu, prices, location, opening hours and a browser-based editor.</p>
+            <div class="price">Free preview</div>
+            <p><a class="button" href="templates/restaurant/">Preview template</a></p>
+            <p class="small">Downloadable package in development. Paid checkout is not enabled.</p>
+          </div>
+        <p><a class="button" href="releases/knight-restaurant-template-v2.zip" download>Download Free ZIP</a></p>
+        </article>
+
+<section class="section" id="how">
+      <div class="info">
+        <h2>Simple. Editable. Yours.</h2>
+        <p class="muted">1. Choose a template. 2. Download the website files. 3. Customize the content. 4. Publish it with a hosting provider you choose.</p>
+        <p class="small">Purchases and downloads are not enabled yet. We will add them after the first template is ready.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 KNIGHT Web Studio · Independent website templates</footer>
+</body>
+</html>

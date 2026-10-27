@@ -1,0 +1,26 @@
+
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Dependencies and local tooling
+node_modules/
+.venv/
+venv/
+__pycache__/
+.DS_Store
+
+# Local backups and temporary files
+*.backup
+*.backup-*
+backups/
+*.tmp
+
+# Publish only the current restaurant package
+/releases/knight-restaurant-template-v1.zip
